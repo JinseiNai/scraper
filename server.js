@@ -17,6 +17,11 @@ var PORT = process.env.PORT || 3000;
 // Initialize Express
 var app = express();
 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/MangaScraper";
+// Connect to the Mongo DB
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
+
 // Configure middleware
 
 // Use morgan logger for logging requests
@@ -26,8 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
 
-// Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/MangaScraper");
+
 
 // Routes
 
